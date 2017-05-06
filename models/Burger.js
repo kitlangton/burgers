@@ -1,21 +1,14 @@
-const Sequelize = require("sequelize");
-const orm = require("../config/orm");
-
-// Burger Model definition
-const Burger = orm.define("burger", {
-  name: Sequelize.STRING,
-  devoured: { type: Sequelize.BOOLEAN, defaultValue: false }
-});
-
-// Seeds
-Burger.sync({ force: true }).then(() => {
-  Burger.create({
-    name: "Good Burger"
+'use strict';
+module.exports = function(sequelize, DataTypes) {
+  var Burger = sequelize.define('Burger', {
+    name: DataTypes.STRING,
+    devoured: DataTypes.BOOLEAN
+  }, {
+    classMethods: {
+      associate: function(models) {
+        // associations can be defined here
+      }
+    }
   });
-  Burger.create({
-    name: "Eaten Burger",
-    devoured: true
-  });
-});
-
-module.exports = Burger;
+  return Burger;
+};

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const Burger = require("../models/Burger");
+const { Burger } = require("../models");
 
 router.post("/burgers", (req, res) => {
   const name = req.body.name;
